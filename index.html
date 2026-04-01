@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230891b2'/><text x='50' y='68' font-size='50' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>AW</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -254,6 +254,31 @@
         width: 100%;
       }
     }
+
+    /* Arabic section */
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 32px 0;
+    }
+
+    .arabic-section {
+      direction: rtl;
+      text-align: center;
+      font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+    }
+
+    .arabic-section h1 {
+      font-size: 26px;
+    }
+
+    .arabic-section .details {
+      text-align: right;
+    }
+
+    .arabic-section .notify-section h2 {
+      font-size: 17px;
+    }
   </style>
 </head>
 <body>
@@ -289,6 +314,37 @@
       <div class="success-message" id="successMessage">
         Thank you! We'll notify you when we're back online.
       </div>
+    </div>
+
+<!-- Arabic Section -->
+    <div class="divider"></div>
+
+    <div class="arabic-section">
+      <h1>سنعود قريباً</h1>
+
+      <p class="apology">نعتذر بشدة، لكن موقع Arabia Weddings غير متاح حالياً.</p>
+
+      <div class="details">
+        <p>نواجه حالياً انقطاعاً في الخدمة بسبب أعطال كبيرة في البنية التحتية المادية في منطقة AWS البحرين. بينما تؤثر هذه المشكلة الإقليمية على العديد من مزودي الخدمات، نتفهم الإحباط الذي تسببه لكم.</p>
+
+        <p>يعمل فريقنا التقني على مدار الساعة لنقل أنظمتنا إلى منطقة جديدة لاستعادة الخدمة في أسرع وقت ممكن. نقدر صبركم وبياناتكم، ونبذل كل ما في وسعنا للعودة للعمل.</p>
+      </div>
+
+      <div class="notify-section">
+        <h2>احصل على إشعار عند عودتنا</h2>
+        <p>اترك بريدك الإلكتروني وسنعلمك فور عودتنا للعمل.</p>
+
+        <form class="email-form" id="notifyFormAr">
+          <input type="email" name="email" id="emailInputAr" placeholder="أدخل بريدك الإلكتروني" required>
+          <button type="submit">أعلمني</button>
+        </form>
+
+        <div class="success-message" id="successMessageAr">
+          شكراً لك! سنعلمك عند عودتنا للعمل.
+        </div>
+      </div>
+
+      <p style="font-size: 15px; color: #6b7280; margin-bottom: 16px;">تابعونا على وسائل التواصل الاجتماعي للحصول على آخر التحديثات:</p>
     </div>
 
     <div class="social-section">
@@ -331,13 +387,14 @@
   </div>
 
   <script>
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw82pIZ0OY3fDjTqCIsZC8m_FD0hbRjdemNgPTdpG0DwRLY-LdZR2JuvxWDKCaVBNxy-A/exec';
+
+    // English form
     const form = document.getElementById('notifyForm');
     const successMessage = document.getElementById('successMessage');
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw82pIZ0OY3fDjTqCIsZC8m_FD0hbRjdemNgPTdpG0DwRLY-LdZR2JuvxWDKCaVBNxy-A/exec';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const button = form.querySelector('button');
       const email = document.getElementById('emailInput').value;
       const originalText = button.textContent;
@@ -348,18 +405,43 @@
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email })
         });
-
         form.classList.add('hidden');
         successMessage.classList.add('show');
       } catch (error) {
         button.textContent = originalText;
         button.disabled = false;
         alert('Something went wrong. Please try again.');
+      }
+    });
+
+    // Arabic form
+    const formAr = document.getElementById('notifyFormAr');
+    const successMessageAr = document.getElementById('successMessageAr');
+
+    formAr.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const button = formAr.querySelector('button');
+      const email = document.getElementById('emailInputAr').value;
+      const originalText = button.textContent;
+      button.textContent = 'جاري الإرسال...';
+      button.disabled = true;
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        formAr.classList.add('hidden');
+        successMessageAr.classList.add('show');
+      } catch (error) {
+        button.textContent = originalText;
+        button.disabled = false;
+        alert('حدث خطأ ما. يرجى المحاولة مرة أخرى.');
       }
     });
   </script>
