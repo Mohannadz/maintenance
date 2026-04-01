@@ -91,6 +91,93 @@
       margin-bottom: 0;
     }
 
+    /* Email capture form */
+    .notify-section {
+      background: #ecfeff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .notify-section h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0e7490;
+      margin-bottom: 8px;
+    }
+
+    .notify-section p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .email-form input[type="email"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .email-form input[type="email"]:focus {
+      outline: none;
+      border-color: #0891b2;
+      box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+    }
+
+    .email-form button {
+      padding: 12px 24px;
+      background: #0891b2;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .email-form button:hover {
+      background: #0e7490;
+      transform: translateY(-1px);
+    }
+
+    .email-form button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .success-message {
+      display: none;
+      background: #d1fae5;
+      color: #065f46;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .email-form.hidden {
+      display: none;
+    }
+
     .social-section {
       margin-top: 32px;
     }
@@ -154,6 +241,18 @@
       .logo {
         width: 160px;
       }
+
+      .email-form {
+        flex-direction: column;
+      }
+
+      .email-form input[type="email"] {
+        min-width: 100%;
+      }
+
+      .email-form button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -175,6 +274,21 @@
       <p>We are currently experiencing a service outage due to major physical infrastructure failures in the AWS Bahrain region. While this regional issue impacts many providers, we understand the frustration it causes you.</p>
 
       <p>Our technical team is working around the clock to migrate our systems to a new region to restore service as quickly as possible. We value your patience and your data, and we are doing everything in our power to get back online.</p>
+    </div>
+
+    <!-- Email Capture Section -->
+    <div class="notify-section">
+      <h2>Get Notified When We're Back</h2>
+      <p>Leave your email and we'll let you know as soon as we're back online.</p>
+
+      <form class="email-form" id="notifyForm">
+        <input type="email" name="email" id="emailInput" placeholder="Enter your email" required>
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        Thank you! We'll notify you when we're back online.
+      </div>
     </div>
 
     <div class="social-section">
@@ -215,5 +329,39 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById('notifyForm');
+    const successMessage = document.getElementById('successMessage');
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw82pIZ0OY3fDjTqCIsZC8m_FD0hbRjdemNgPTdpG0DwRLY-LdZR2JuvxWDKCaVBNxy-A/exec';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const button = form.querySelector('button');
+      const email = document.getElementById('emailInput').value;
+      const originalText = button.textContent;
+      button.textContent = 'Sending...';
+      button.disabled = true;
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: email })
+        });
+
+        form.classList.add('hidden');
+        successMessage.classList.add('show');
+      } catch (error) {
+        button.textContent = originalText;
+        button.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
 </body>
 </html>
