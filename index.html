@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arabia Weddings - We'll Be Back Soon</title>
+  <meta name="description" content="Arabia Weddings is temporarily unavailable. We're working to restore service.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230891b2'/><text x='50' y='68' font-size='50' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>AW</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,70 +22,128 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 50%, #f0f9ff 100%);
+      background: linear-gradient(145deg, #f0fdfa 0%, #ecfeff 40%, #e0f2fe 100%);
       padding: 24px;
+      line-height: 1.6;
+    }
+
+    body.rtl {
+      direction: rtl;
+      font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
     }
 
     .container {
-      max-width: 640px;
+      max-width: 580px;
       width: 100%;
       background: white;
-      border-radius: 24px;
-      padding: 48px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      border-radius: 28px;
+      padding: 48px 40px;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.07),
+        0 10px 20px -5px rgba(0, 0, 0, 0.05),
+        0 0 0 1px rgba(0, 0, 0, 0.03);
       text-align: center;
+      animation: fadeIn 0.5s ease-out;
     }
 
-    .logo {
-      width: 200px;
-      height: auto;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Language Toggle */
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
       margin-bottom: 32px;
     }
 
+    .lang-btn {
+      padding: 8px 20px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      color: #6b7280;
+    }
+
+    .lang-btn:hover {
+      border-color: #0891b2;
+      color: #0891b2;
+    }
+
+    .lang-btn.active {
+      background: #0891b2;
+      border-color: #0891b2;
+      color: white;
+    }
+
+    .logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 28px;
+    }
+
     .icon-container {
-      width: 80px;
-      height: 80px;
-      background: #fef3c7;
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     .icon-container svg {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       color: #d97706;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: #111827;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
 
     .apology {
-      font-size: 16px;
-      color: #4b5563;
+      font-size: 15px;
+      color: #6b7280;
       margin-bottom: 24px;
-      line-height: 1.6;
     }
 
     .details {
-      background: #f9fafb;
+      background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
       border-radius: 16px;
-      padding: 24px;
+      padding: 20px 24px;
       margin-bottom: 24px;
       text-align: left;
+      border: 1px solid #f3f4f6;
+    }
+
+    body.rtl .details {
+      text-align: right;
     }
 
     .details p {
-      font-size: 15px;
+      font-size: 14px;
       color: #4b5563;
       line-height: 1.7;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .details p:last-child {
@@ -93,52 +152,65 @@
 
     /* Email capture form */
     .notify-section {
-      background: #ecfeff;
+      background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
       border-radius: 16px;
       padding: 24px;
       margin-bottom: 24px;
+      border: 1px solid #a5f3fc;
     }
 
     .notify-section h2 {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       color: #0e7490;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .notify-section h2 svg {
+      width: 18px;
+      height: 18px;
     }
 
     .notify-section p {
-      font-size: 14px;
-      color: #4b5563;
+      font-size: 13px;
+      color: #0f766e;
       margin-bottom: 16px;
+      opacity: 0.9;
     }
 
     .email-form {
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: 10px;
     }
 
     .email-form input[type="email"] {
       flex: 1;
-      min-width: 200px;
-      padding: 12px 16px;
+      padding: 14px 18px;
       border: 2px solid #e5e7eb;
       border-radius: 12px;
       font-size: 15px;
       font-family: inherit;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.2s ease;
+      background: white;
     }
 
     .email-form input[type="email"]:focus {
       outline: none;
       border-color: #0891b2;
-      box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+      box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.1);
+    }
+
+    .email-form input[type="email"]::placeholder {
+      color: #9ca3af;
     }
 
     .email-form button {
-      padding: 12px 24px;
-      background: #0891b2;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
       color: white;
       border: none;
       border-radius: 12px;
@@ -146,32 +218,48 @@
       font-weight: 600;
       font-family: inherit;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
     .email-form button:hover {
-      background: #0e7490;
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+    }
+
+    .email-form button:active {
+      transform: translateY(0);
     }
 
     .email-form button:disabled {
       background: #9ca3af;
       cursor: not-allowed;
       transform: none;
+      box-shadow: none;
     }
 
     .success-message {
       display: none;
-      background: #d1fae5;
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
       color: #065f46;
-      padding: 12px 16px;
+      padding: 14px 18px;
       border-radius: 12px;
       font-size: 14px;
       font-weight: 500;
+      border: 1px solid #6ee7b7;
     }
 
     .success-message.show {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .success-message svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
     }
 
     .email-form.hidden {
@@ -179,41 +267,47 @@
     }
 
     .social-section {
-      margin-top: 32px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #f3f4f6;
     }
 
     .social-section p {
-      font-size: 15px;
-      color: #6b7280;
+      font-size: 13px;
+      color: #9ca3af;
       margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .social-link {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.2s ease;
       text-decoration: none;
     }
 
     .social-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     .social-link svg {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
+      fill: white;
     }
 
     .social-link.facebook { background: #1877f2; }
@@ -225,64 +319,48 @@
     .social-link.threads { background: #000000; }
     .social-link.tiktok { background: #000000; }
 
-    .social-link svg {
-      fill: white;
-    }
-
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
       .container {
-        padding: 32px 24px;
+        padding: 36px 24px;
+        border-radius: 24px;
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       .logo {
-        width: 160px;
+        width: 150px;
       }
 
       .email-form {
         flex-direction: column;
       }
 
-      .email-form input[type="email"] {
-        min-width: 100%;
-      }
-
       .email-form button {
         width: 100%;
       }
-    }
 
-    /* Arabic section */
-    .divider {
-      height: 1px;
-      background: #e5e7eb;
-      margin: 32px 0;
-    }
+      .social-link {
+        width: 40px;
+        height: 40px;
+      }
 
-    .arabic-section {
-      direction: rtl;
-      text-align: center;
-      font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
-    }
-
-    .arabic-section h1 {
-      font-size: 26px;
-    }
-
-    .arabic-section .details {
-      text-align: right;
-    }
-
-    .arabic-section .notify-section h2 {
-      font-size: 17px;
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+    </div>
+
     <img src="https://www.arabiaweddings.com/_next/static/media/Arabia-Weddings-Logo.abf2b48c.svg" alt="Arabia Weddings" class="logo">
 
     <div class="icon-container">
@@ -291,94 +369,63 @@
       </svg>
     </div>
 
-    <h1>We'll Be Back Soon</h1>
+    <h1 id="title">We'll Be Back Soon</h1>
 
-    <p class="apology">We sincerely apologize, but Arabia Weddings is currently unavailable.</p>
+    <p class="apology" id="apology">We sincerely apologize, but Arabia Weddings is currently unavailable.</p>
 
     <div class="details">
-      <p>We are currently experiencing a service outage due to major physical infrastructure failures in the AWS Bahrain region. While this regional issue impacts many providers, we understand the frustration it causes you.</p>
-
-      <p>Our technical team is working around the clock to migrate our systems to a new region to restore service as quickly as possible. We value your patience and your data, and we are doing everything in our power to get back online.</p>
+      <p id="details1">We are currently experiencing a service outage due to major physical infrastructure failures in the AWS Bahrain region. While this regional issue impacts many providers, we understand the frustration it causes you.</p>
+      <p id="details2">Our technical team is working around the clock to migrate our systems to a new region to restore service as quickly as possible. We value your patience and your data, and we are doing everything in our power to get back online.</p>
     </div>
 
     <!-- Email Capture Section -->
     <div class="notify-section">
-      <h2>Get Notified When We're Back</h2>
-      <p>Leave your email and we'll let you know as soon as we're back online.</p>
+      <h2 id="notifyTitle">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+        <span>Get Notified When We're Back</span>
+      </h2>
+      <p id="notifyDesc">Leave your email and we'll let you know as soon as we're back online.</p>
 
       <form class="email-form" id="notifyForm">
         <input type="email" name="email" id="emailInput" placeholder="Enter your email" required>
-        <button type="submit">Notify Me</button>
+        <button type="submit" id="submitBtn">Notify Me</button>
       </form>
 
       <div class="success-message" id="successMessage">
-        Thank you! We'll notify you when we're back online.
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span id="successText">Thank you! We'll notify you when we're back online.</span>
       </div>
-    </div>
-
-<!-- Arabic Section -->
-    <div class="divider"></div>
-
-    <div class="arabic-section">
-      <h1>سنعود قريباً</h1>
-
-      <p class="apology">نعتذر بشدة، لكن موقع Arabia Weddings غير متاح حالياً.</p>
-
-      <div class="details">
-        <p>نواجه حالياً انقطاعاً في الخدمة بسبب أعطال كبيرة في البنية التحتية المادية في منطقة AWS البحرين. بينما تؤثر هذه المشكلة الإقليمية على العديد من مزودي الخدمات، نتفهم الإحباط الذي تسببه لكم.</p>
-
-        <p>يعمل فريقنا التقني على مدار الساعة لنقل أنظمتنا إلى منطقة جديدة لاستعادة الخدمة في أسرع وقت ممكن. نقدر صبركم وبياناتكم، ونبذل كل ما في وسعنا للعودة للعمل.</p>
-      </div>
-
-      <div class="notify-section">
-        <h2>احصل على إشعار عند عودتنا</h2>
-        <p>اترك بريدك الإلكتروني وسنعلمك فور عودتنا للعمل.</p>
-
-        <form class="email-form" id="notifyFormAr">
-          <input type="email" name="email" id="emailInputAr" placeholder="أدخل بريدك الإلكتروني" required>
-          <button type="submit">أعلمني</button>
-        </form>
-
-        <div class="success-message" id="successMessageAr">
-          شكراً لك! سنعلمك عند عودتنا للعمل.
-        </div>
-      </div>
-
-      <p style="font-size: 15px; color: #6b7280; margin-bottom: 16px;">تابعونا على وسائل التواصل الاجتماعي للحصول على آخر التحديثات:</p>
     </div>
 
     <div class="social-section">
-      <p>Follow us on social media for real-time updates:</p>
+      <p id="socialText">Follow us for updates</p>
 
       <div class="social-links">
         <a href="https://www.facebook.com/arabiaweddings" target="_blank" rel="noopener noreferrer" class="social-link facebook" title="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
-
         <a href="https://www.instagram.com/arabiaweddings/" target="_blank" rel="noopener noreferrer" class="social-link instagram" title="Instagram">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-
         <a href="https://twitter.com/arabiaweddings" target="_blank" rel="noopener noreferrer" class="social-link twitter" title="X (Twitter)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-
         <a href="https://www.pinterest.com/arabiaweddings/" target="_blank" rel="noopener noreferrer" class="social-link pinterest" title="Pinterest">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
         </a>
-
         <a href="https://www.youtube.com/arabiaweddings/" target="_blank" rel="noopener noreferrer" class="social-link youtube" title="YouTube">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
-
         <a href="https://www.linkedin.com/company/arabia-weddings" target="_blank" rel="noopener noreferrer" class="social-link linkedin" title="LinkedIn">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-
         <a href="https://www.threads.net/@arabiaweddings" target="_blank" rel="noopener noreferrer" class="social-link threads" title="Threads">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.88-.73 2.107-1.168 3.456-1.233 1.122-.054 2.162.058 3.105.306a5.137 5.137 0 0 0-.067-.974c-.173-1.09-.648-1.553-1.135-1.79-.567-.277-1.39-.41-2.312-.377l-.17.006c-1.361.057-2.472.467-3.215 1.188-.684.663-1.05 1.554-1.05 2.574h-2.12c0-1.57.567-2.946 1.64-3.984 1.073-1.04 2.583-1.59 4.37-1.59l.178-.002c1.239-.032 2.417.17 3.41.584 1.193.497 2.072 1.378 2.536 2.548.31.783.46 1.726.46 2.79 0 .186-.007.37-.02.553 1.226.756 2.127 1.758 2.606 2.934.734 1.798.608 4.674-1.725 6.953-1.882 1.838-4.251 2.67-7.476 2.697zm.66-8.478c-.877.042-1.58.272-2.04.667-.38.327-.59.75-.567 1.14.027.478.256.876.645 1.119.47.293 1.123.456 1.841.456.063 0 .127-.001.19-.004 1.07-.057 1.876-.442 2.4-1.145.396-.532.655-1.243.77-2.116-.95-.263-2.058-.31-3.24-.117z"/></svg>
         </a>
-
         <a href="https://www.tiktok.com/@arabiaweddings" target="_blank" rel="noopener noreferrer" class="social-link tiktok" title="TikTok">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
         </a>
@@ -389,7 +436,63 @@
   <script>
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw82pIZ0OY3fDjTqCIsZC8m_FD0hbRjdemNgPTdpG0DwRLY-LdZR2JuvxWDKCaVBNxy-A/exec';
 
-    // English form
+    const content = {
+      en: {
+        title: "We'll Be Back Soon",
+        apology: "We sincerely apologize, but Arabia Weddings is currently unavailable.",
+        details1: "We are currently experiencing a service outage due to major physical infrastructure failures in the AWS Bahrain region. While this regional issue impacts many providers, we understand the frustration it causes you.",
+        details2: "Our technical team is working around the clock to migrate our systems to a new region to restore service as quickly as possible. We value your patience and your data, and we are doing everything in our power to get back online.",
+        notifyTitle: "Get Notified When We're Back",
+        notifyDesc: "Leave your email and we'll let you know as soon as we're back online.",
+        placeholder: "Enter your email",
+        submitBtn: "Notify Me",
+        sending: "Sending...",
+        successText: "Thank you! We'll notify you when we're back online.",
+        socialText: "Follow us for updates",
+        error: "Something went wrong. Please try again."
+      },
+      ar: {
+        title: "سنعود قريباً",
+        apology: "نعتذر بشدة، لكن موقع Arabia Weddings غير متاح حالياً.",
+        details1: "نواجه حالياً انقطاعاً في الخدمة بسبب أعطال كبيرة في البنية التحتية المادية في منطقة AWS البحرين. بينما تؤثر هذه المشكلة الإقليمية على العديد من مزودي الخدمات، نتفهم الإحباط الذي تسببه لكم.",
+        details2: "يعمل فريقنا التقني على مدار الساعة لنقل أنظمتنا إلى منطقة جديدة لاستعادة الخدمة في أسرع وقت ممكن. نقدر صبركم وبياناتكم، ونبذل كل ما في وسعنا للعودة للعمل.",
+        notifyTitle: "احصل على إشعار عند عودتنا",
+        notifyDesc: "اترك بريدك الإلكتروني وسنعلمك فور عودتنا للعمل.",
+        placeholder: "أدخل بريدك الإلكتروني",
+        submitBtn: "أعلمني",
+        sending: "جاري الإرسال...",
+        successText: "شكراً لك! سنعلمك عند عودتنا للعمل.",
+        socialText: "تابعونا للحصول على آخر التحديثات",
+        error: "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const c = content[lang];
+
+      document.body.classList.toggle('rtl', lang === 'ar');
+      document.documentElement.lang = lang;
+
+      document.getElementById('title').textContent = c.title;
+      document.getElementById('apology').textContent = c.apology;
+      document.getElementById('details1').textContent = c.details1;
+      document.getElementById('details2').textContent = c.details2;
+      document.querySelector('#notifyTitle span').textContent = c.notifyTitle;
+      document.getElementById('notifyDesc').textContent = c.notifyDesc;
+      document.getElementById('emailInput').placeholder = c.placeholder;
+      document.getElementById('submitBtn').textContent = c.submitBtn;
+      document.getElementById('successText').textContent = c.successText;
+      document.getElementById('socialText').textContent = c.socialText;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(lang === 'en' ? 'English' : 'العربية'));
+      });
+    }
+
+    // Form submission
     const form = document.getElementById('notifyForm');
     const successMessage = document.getElementById('successMessage');
 
@@ -398,7 +501,7 @@
       const button = form.querySelector('button');
       const email = document.getElementById('emailInput').value;
       const originalText = button.textContent;
-      button.textContent = 'Sending...';
+      button.textContent = content[currentLang].sending;
       button.disabled = true;
 
       try {
@@ -413,35 +516,7 @@
       } catch (error) {
         button.textContent = originalText;
         button.disabled = false;
-        alert('Something went wrong. Please try again.');
-      }
-    });
-
-    // Arabic form
-    const formAr = document.getElementById('notifyFormAr');
-    const successMessageAr = document.getElementById('successMessageAr');
-
-    formAr.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const button = formAr.querySelector('button');
-      const email = document.getElementById('emailInputAr').value;
-      const originalText = button.textContent;
-      button.textContent = 'جاري الإرسال...';
-      button.disabled = true;
-
-      try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email })
-        });
-        formAr.classList.add('hidden');
-        successMessageAr.classList.add('show');
-      } catch (error) {
-        button.textContent = originalText;
-        button.disabled = false;
-        alert('حدث خطأ ما. يرجى المحاولة مرة أخرى.');
+        alert(content[currentLang].error);
       }
     });
   </script>
